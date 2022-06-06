@@ -1,0 +1,15 @@
+name: Run YAML validation
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - run: pip install -r ./requirements.txt
+      - run: python ./metadata_validator.py
