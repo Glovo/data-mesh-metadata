@@ -11,7 +11,7 @@ def validate(base_path):
         raise ValidationException(f"Metadata folder should have one directory and one file, instead {all}")
 
     domain_file = next(filter(lambda x: ".yml" in x, all), None)
-    result, error_message = validate_schema(f"{base_path}/{domain_file}", "./schema/domain_schema.py")
+    result, error_message = validate_schema(f"{base_path}/{domain_file}", "./schema/domain_schema.yml")
 
     if result:
         print("Successful validation")

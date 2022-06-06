@@ -11,7 +11,7 @@ def _load_doc(data_file):
 
 
 def validate_schema(data_file, schema_file):
-    schema = eval(open(schema_file, 'r').read())
+    schema = _load_doc(schema_file)
     v = Validator(schema)
     doc = _load_doc(data_file)
     result = v.validate(doc, schema)
