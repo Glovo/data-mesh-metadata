@@ -1,0 +1,10 @@
+name:
+  type: string
+  required: True
+description:
+  type: string
+  required: True
+status:
+  type: string
+  required: True
+
