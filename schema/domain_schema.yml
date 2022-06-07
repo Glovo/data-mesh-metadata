@@ -1,25 +1,6 @@
 name:
   type: string
   required: True
-description:
-  type: string
-  required: True
-status:
-  type: string
-  required: True
-data_classification:
-  type: string
-  required: True
-contains_pii:
-  type: boolean
-  required: True
-links:
-  type: dict
-  schema:
-    confluence_page_url:
-      type: string
-    code_repository_url:
-      type: string
 contact:
   type: dict
   schema:
@@ -27,4 +8,14 @@ contact:
       type: string
     slack_channel:
       type: string
+links:
+  type: dict
+  schema:
+    confluence_page_url:
+      type: string
+    code_repository_url:
+      type: string
+description:
+  type: string
+  required: True
 

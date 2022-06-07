@@ -6,8 +6,4 @@ links:
   confluence_page_url: https://glovoapp.atlassian.net/wiki/spaces/TECH/pages/1109132416/Customer+Cluster
   code_repository_url: https://github.com/Glovo/customer_data_mesh
 description: Customer cluster
-status: Active
-data_classification: L3
-contains_pii: false
-
 

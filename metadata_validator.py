@@ -1,35 +1,40 @@
+import os
 from os import listdir
-from os.path import join
+from os.path import exists
 
 from model import ValidationException
 from validator import validate_schema
 
+DOMAIN_CONFIG_FILE = "domain.yml"
+DOMAIN_SCHEMA_FILE = "./schema/domain_schema.yml"
 
-def print_results(file_name, result, error_message):
+PRODUCT_SCHEMA_FILE = "./schema/product_schema.yml"
+
+
+def handle_validation_results(file_name, result, error_message):
     if result:
         print(f"{file_name} successfully validated!!")
     else:
-        print("Validation failed")
-        print(error_message)
-        exit(1)
+        raise ValidationException(f"Failed to validate {file_name}. Errors: {error_message}")
+
 
 def validate(base_path):
     base_folder_elements = listdir(base_path)
 
-    if len(base_folder_elements) != 2:
-        raise ValidationException(f"Metadata folder should have one directory and one file, instead {base_folder_elements}")
+    domain_file = next(filter(lambda x: x == DOMAIN_CONFIG_FILE, base_folder_elements), None)
+    if domain_file:
+        result, error_message = validate_schema(f"{base_path}/{domain_file}", DOMAIN_SCHEMA_FILE)
+    else:
+        raise ValidationException(f"Cannot find {DOMAIN_CONFIG_FILE} in the base path")
 
-    domain_file = next(filter(lambda x: ".yml" in x, base_folder_elements), None)
-    result, error_message = validate_schema(f"{base_path}/{domain_file}", "./schema/domain_schema.yml")
+    handle_validation_results(domain_file, result, error_message)
 
-    print_results(domain_file, result, error_message)
-
-    product_files =  listdir(join(base_path, "products"))
-
-    for product in product_files:
-        result, error_message = validate_schema(f"{base_path}/products/{product}", "./schema/product_schema.yml")
-
-        print_results(product, result, error_message)
+    all_folders = next(os.walk(base_path))[1]
+    product_config_files = map(lambda x: f"{x}/{x}.yml", all_folders)
+    for product_config_file in product_config_files:
+        if exists(f"{base_path}/{product_config_file}"):
+            result, error_message = validate_schema(f"{base_path}/{product_config_file}", PRODUCT_SCHEMA_FILE)
+            handle_validation_results(product_config_file, result, error_message)
 
 
 if __name__ == '__main__':

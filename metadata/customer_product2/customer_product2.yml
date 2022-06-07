@@ -1,0 +1,6 @@
+name: customer_product2
+links:
+  confluence_page_url: https://glovoapp.atlassian.net/wiki/spaces/TECH/pages/customer_product1
+  code_repository_url: https://github.com/Glovo/customer_data_mesh/.../customer_product1
+description: Product 2 description
+status: Active

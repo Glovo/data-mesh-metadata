@@ -1,6 +1,13 @@
 name:
   type: string
   required: True
+links:
+  type: dict
+  schema:
+    confluence_page_url:
+      type: string
+    code_repository_url:
+      type: string
 description:
   type: string
   required: True
