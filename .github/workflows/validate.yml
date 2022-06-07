@@ -3,5 +3,5 @@ name: Reusable domain validation
 on: [ push ]
 
 jobs:
-  validate-schemas:
+  validate-data-mesh-config:
     uses: Glovo/data-mesh-metadata/.github/workflows/schema_validator.yml@main
