@@ -1,0 +1,7 @@
+name: Reusable domain validation
+
+on: [ push ]
+
+jobs:
+  compliance:
+    uses: Glovo/data-mesh-metadata/.github/workflows/schema_validator.yml@main

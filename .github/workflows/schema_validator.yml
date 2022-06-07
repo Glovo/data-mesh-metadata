@@ -1,6 +1,7 @@
-name: Run YAML validation
+name: Reusable domain validation
 
-on: [ push ]
+on:
+  workflow_call:
 
 jobs:
   build:
