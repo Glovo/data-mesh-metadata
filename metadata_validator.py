@@ -5,10 +5,10 @@ from os.path import exists
 from model import ValidationException
 from validator import validate_schema
 
-DOMAIN_CONFIG_FILE = "domain.yml"
-DOMAIN_SCHEMA_FILE = "./schema/domain_schema.yml"
+DOMAIN_CONFIG_FILE = "domain.metadata.yaml"
+DOMAIN_SCHEMA_FILE = "schema/domain_schema.yaml"
 
-PRODUCT_SCHEMA_FILE = "./schema/product_schema.yml"
+PRODUCT_SCHEMA_FILE = "schema/product_schema.yaml"
 
 
 def handle_validation_results(file_name, result, error_message):
