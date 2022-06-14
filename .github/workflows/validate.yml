@@ -4,4 +4,4 @@ on: [ push ]
 
 jobs:
   validate-data-mesh-config:
-    uses: Glovo/data-mesh-metadata/.github/workflows/schema_validator.yml@main
+    uses: Glovo/data-platform-kit/.github/workflows/schema_validator.yml@d70090dbf5b6ce754f7ecdd5b885883d5a7fb5e1
